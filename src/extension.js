@@ -1,4 +1,5 @@
 import St from 'gi://St';
+import GLib from 'gi://GLib';
 
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
@@ -18,7 +19,7 @@ export default class extends Extension {
     Main.panel.addToStatusArea(this.uuid, this._panelMenuButton);
 
     this._panelMenuButton.connect('button-press-event', function () {
-      Main.screenshotUI.open();
+      GLib.spawn_command_line_async('screenedit -a');
     });
   }
 
